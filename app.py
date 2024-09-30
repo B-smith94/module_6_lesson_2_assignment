@@ -228,11 +228,11 @@ def get_member_sessions(member_id):
 
         cursor.execute(query, member_id_tuple)
 
-        session = cursor.fetchall()
-        if not session:
+        sessions = cursor.fetchall()
+        if not sessions:
             return jsonify({"error": "Sessions not found"}), 404
         else:
-            return session_schema.jsonify(session)
+            return sessions_schema.jsonify(sessions)
     except Error as e:
         print(f"Error: {e}")
         return jsonify({"error": "Internal Server Error"}), 500
